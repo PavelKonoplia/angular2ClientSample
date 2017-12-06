@@ -1,0 +1,10 @@
+<div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{currentItem}}</button>
+    <ul class="dropdown-menu">
+        <li class="dropdown-item"
+        (click)="select(defaultName)"><a>{{defaultName}}</a></li>
+        <li *ngFor="let item of items"
+        class="dropdown-item"
+        (click)="select(item)"><a>{{item}}</a></li>
+    </ul>
+</div>

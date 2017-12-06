@@ -1,0 +1,11 @@
+<dropdown [items]="categories" [currentItem]="currentCategory" (currentItemChange)="setCurrentCategory($event)"> </dropdown>
+<add-product (productAdded)="productAdded($event)"></add-product>
+
+<div *ngFor="let p of products">
+    <div *ngIf="thisCategory(p)" [ngClass]="getClass(p)">
+        <div class="id">{{p.id}}</div>
+        <div class="name">{{p.name}}</div>
+        <div class="price">{{p.price}}</div>
+        <button (click)="delete(p)">Delete</button>
+    </div>
+</div>

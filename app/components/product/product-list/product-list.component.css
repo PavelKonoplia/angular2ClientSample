@@ -1,0 +1,25 @@
+.myrow, .red{
+    display: table;
+    width: 100%; /*Optional*/
+    table-layout: fixed; /*Optional*/
+    text-align: center;
+}
+
+.id{
+   display: table-cell;
+  width:20%;
+}
+.name{ 
+ display: table-cell;
+  width:30%;
+}
+.price{
+   display: table-cell;
+  width:30%
+}
+.butt{
+   display: table-cell;
+  }
+.red{
+  color:red;
+}

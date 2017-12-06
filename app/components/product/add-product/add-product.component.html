@@ -1,0 +1,27 @@
+<div class="col-xs-10">
+        <div class="form-group">
+                <label>Id</label>
+                <input class="form-control" name="id" [(ngModel)]="product.id" #productId="ngModel" />
+        </div>
+        <div class="form-group">
+                <label>Name</label>
+                <input class="form-control" name="name" [(ngModel)]="product.name" #productName="ngModel" />
+        </div>
+        <div class="form-group">
+                <label>Price</label>
+                <input type="number" class="form-control" name="price" [(ngModel)]="product.price" #productPrice="ngModel" />
+        </div>
+        <div class="form-group">
+                <label>Category</label>
+                <select class="form-control" name="category" [(ngModel)]="product.category" #productCategory="ngModel">
+                        <option *ngFor="let category of categories" [value]="category">
+                                {{category}}
+                        </option>
+                </select>
+        </div>
+        <div class="form-group">
+                <button class="btn btn-default" (click)="addProduct(productId, productName, productPrice, productCategory)">
+                        Add Product
+                </button>
+        </div>
+</div>
