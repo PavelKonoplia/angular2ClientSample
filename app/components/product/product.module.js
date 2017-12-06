@@ -24,10 +24,10 @@ var ProductModule = /** @class */ (function () {
                 forms_1.FormsModule
             ],
             exports: [
-                index_1.ProductListComponent, index_1.AddProductComponent
+                index_1.ProductListComponent, index_1.AddProductComponent, index_1.ProductDetailsComponent
             ],
             declarations: [
-                index_1.ProductListComponent, index_1.AddProductComponent
+                index_1.ProductListComponent, index_1.AddProductComponent, index_1.ProductDetailsComponent
             ],
             providers: [category_service_1.CategoryService, product_service_1.ProductService]
         })

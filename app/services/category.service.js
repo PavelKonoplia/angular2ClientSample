@@ -7,12 +7,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var categories = ["house", "construction", "garden"];
+var categoriesPromise = Promise.resolve(categories);
 var CategoryService = /** @class */ (function () {
     function CategoryService() {
-        this.categories = ["house", "construction", "garden"];
     }
     CategoryService.prototype.getData = function () {
-        return this.categories;
+        return categoriesPromise;
     };
     CategoryService = __decorate([
         core_1.Injectable()

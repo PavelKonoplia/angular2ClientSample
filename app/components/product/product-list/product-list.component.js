@@ -12,17 +12,32 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var product_service_1 = require("../../../services/product.service");
 var category_service_1 = require("../../../services/category.service");
+var router_1 = require("@angular/router");
 var ProductListComponent = /** @class */ (function () {
-    function ProductListComponent(productService, categoryService) {
+    function ProductListComponent(productService, categoryService, router) {
         this.productService = productService;
         this.categoryService = categoryService;
+        this.router = router;
         this.currentCategory = "All";
-        this.products = productService.getData();
-        this.categories = categoryService.getData();
     }
-    ProductListComponent.prototype.ngOnInit = function () {
+    ProductListComponent.prototype.cutTheRows = function () {
         this.rows ? this.rows : this.rows = this.products.length;
         this.products = this.products.slice(0, this.rows);
+    };
+    ProductListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.productService
+            .getAll()
+            .then(function (result) { return _this.products = result; });
+        this.categoryService
+            .getData()
+            .then(function (result) { return _this.categories = result; });
+        if (this.products) {
+            this.cutTheRows();
+        }
+    };
+    ProductListComponent.prototype.onSelect = function (selected) {
+        this.router.navigate(["product", selected.id]);
     };
     ProductListComponent.prototype.delete = function (p) {
         var id = this.products.indexOf(p);
@@ -54,7 +69,9 @@ var ProductListComponent = /** @class */ (function () {
             templateUrl: 'product-list.component.html',
             styleUrls: ['product-list.component.css']
         }),
-        __metadata("design:paramtypes", [product_service_1.ProductService, category_service_1.CategoryService])
+        __metadata("design:paramtypes", [product_service_1.ProductService,
+            category_service_1.CategoryService,
+            router_1.Router])
     ], ProductListComponent);
     return ProductListComponent;
 }());

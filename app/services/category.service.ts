@@ -1,12 +1,14 @@
 import { Injectable } from "@angular/core";
 
+let categories: string[] = ["house", "construction", "garden"];
+
+let categoriesPromise = Promise.resolve(categories);
+
 @Injectable() 
 export class CategoryService {
 
-    categories: string[] = ["house", "construction", "garden"];
-
-    getData() {
-        return this.categories;
-    }    
+    getData(): Promise<string[]> {
+        return categoriesPromise;
+    }
 }
 

@@ -14,20 +14,22 @@ var app_component_1 = require("./app.component");
 var app_routes_1 = require("./app.routes");
 var product_module_1 = require("./components/product/product.module");
 var controls_module_1 = require("./controls/controls.module");
+var home_module_1 = require("./components/home/home.module");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             imports: [
-                platform_browser_1.BrowserModule,
+                home_module_1.HomeModule,
                 product_module_1.ProductModule,
                 controls_module_1.ControlsModule,
                 forms_1.FormsModule,
+                platform_browser_1.BrowserModule,
                 router_1.RouterModule.forRoot(app_routes_1.routes)
             ],
             declarations: [app_component_1.AppComponent],
-            bootstrap: [app_component_1.AppComponent] // компонент с которого начинается отображение приложения
+            bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);
     return AppModule;

@@ -8,7 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var product_model_1 = require("../models/product.model");
-var products = [new product_model_1.ProductModel(1, "brick", 100, "construction"),
+var products = [
+    new product_model_1.ProductModel(1, "brick", 100, "construction"),
     new product_model_1.ProductModel(2, "scizers", 200, "garden"),
     new product_model_1.ProductModel(3, "sofa", 300, "house"),
     new product_model_1.ProductModel(4, "table", 400, "house"),
@@ -17,8 +18,8 @@ var products = [new product_model_1.ProductModel(1, "brick", 100, "construction"
     new product_model_1.ProductModel(7, "rake", 700, "garden"),
     new product_model_1.ProductModel(8, "scizers for trees", 800, "garden"),
     new product_model_1.ProductModel(9, "blocks", 900, "construction"),
-    new product_model_1.ProductModel(10, "water station", 1000, "garden")];
-// Promise, который сразу переходит в состояние resolved с данными из массива phrases
+    new product_model_1.ProductModel(10, "water station", 1000, "garden")
+];
 var productsPromise = Promise.resolve(products);
 var ProductService = /** @class */ (function () {
     function ProductService() {
@@ -26,14 +27,11 @@ var ProductService = /** @class */ (function () {
     ProductService.prototype.getData = function () {
         return productsPromise;
     };
-    // Метод для получения всех фраз. Возвращает Promise с массивом Phrase
     ProductService.prototype.getAll = function () {
         return productsPromise;
     };
-    // Метод для получения фразы по id. Возвращает Promise c экземпляром Phrase
-    ProductService.prototype.getPhrase = function (id) {
-        return productsPromise
-            .then(function (products) { return products.find(function (x) { return x.id == id; }); });
+    ProductService.prototype.getProduct = function (id) {
+        return productsPromise.then(function (products) { return products.find(function (x) { return x.id == id; }); });
     };
     ProductService = __decorate([
         core_1.Injectable()

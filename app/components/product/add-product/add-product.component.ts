@@ -18,8 +18,14 @@ export class AddProductComponent {
     productAdded: EventEmitter<ProductModel> = new EventEmitter();
 
     constructor(private categoryService: CategoryService) {
-        this.categories = categoryService.getData();
     }
+
+    ngOnInit() {
+        this.categoryService // обращаемся к сервису
+            .getData()   // получаем Promise 
+            .then(result => this.categories = result); // как только Promise перейдет в состояние resolved результат его работы присваиваем свойству phrases
+    }
+
 
     addProduct() {
         this.invalid = false;

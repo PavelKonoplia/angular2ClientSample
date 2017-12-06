@@ -18,8 +18,13 @@ var AddProductComponent = /** @class */ (function () {
         this.product = new product_model_1.ProductModel(undefined, undefined, undefined, undefined);
         this.invalid = false;
         this.productAdded = new core_1.EventEmitter();
-        this.categories = categoryService.getData();
     }
+    AddProductComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.categoryService // обращаемся к сервису
+            .getData() // получаем Promise 
+            .then(function (result) { return _this.categories = result; }); // как только Promise перейдет в состояние resolved результат его работы присваиваем свойству phrases
+    };
     AddProductComponent.prototype.addProduct = function () {
         this.invalid = false;
         if (this.product.id && this.product.name && this.product.price && this.product.category) {

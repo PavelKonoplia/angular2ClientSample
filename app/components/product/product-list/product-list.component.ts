@@ -3,12 +3,13 @@ import { ProductModel } from '../../../models/product.model';
 import { AddProductComponent } from '../add-product/add-product.component';
 import { ProductService } from '../../../services/product.service';
 import { CategoryService } from '../../../services/category.service';
+import { Router } from "@angular/router"
 
-@Component({    
+@Component({
     moduleId: module.id,
-    selector: 'product-list',                       
+    selector: 'product-list',
     templateUrl: 'product-list.component.html',
-    styleUrls: ['product-list.component.css'] 
+    styleUrls: ['product-list.component.css']
 })
 export class ProductListComponent {
 
@@ -18,14 +19,32 @@ export class ProductListComponent {
     products: any;
     categories: any;
 
-    constructor(private productService: ProductService, private categoryService: CategoryService) {
-        this.products = productService.getData();
-        this.categories = categoryService.getData();
+    constructor(private productService: ProductService,
+        private categoryService: CategoryService,
+        private router: Router) {
+    }
+
+    cutTheRows() {
+        this.rows ? this.rows : this.rows = this.products.length;
+        this.products = this.products.slice(0, this.rows);
     }
 
     ngOnInit() {
-        this.rows ? this.rows : this.rows = this.products.length;
-        this.products = this.products.slice(0, this.rows);
+        this.productService 
+            .getAll()   
+            .then(result => this.products = result); 
+
+        this.categoryService 
+            .getData()   
+            .then(result => this.categories = result); 
+
+        if(this.products){
+            this.cutTheRows();
+        }        
+    }
+
+    onSelect(selected: ProductModel) {
+        this.router.navigate(["product", selected.id]);
     }
 
     delete(p: ProductModel) {
