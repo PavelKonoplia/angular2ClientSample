@@ -13,33 +13,22 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var product_service_1 = require("../../../services/product.service");
 var ProductDetailsComponent = /** @class */ (function () {
-    // ActivatedRoute - содержит информацию о маршруте связанную с компонентом, который загружен в outlet
     function ProductDetailsComponent(router, activatedRoute, service) {
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.service = service;
     }
     ProductDetailsComponent.prototype.ngOnInit = function () {
-        // params - параметры текущего маршрута. Данное свойство является Observable объектом
-        // Если параметры будут изменены - произойдет событие и компонент узнает о изменениях.
         var _this = this;
-        // OBSERVABLE PARAMS
-        // forEach - устанавливаем обработчик на каждое изменение params
         this.activatedRoute.params.forEach(function (params) {
-            var id = +params["id"]; // конвертируем значение параметра id в тип number
+            var id = +params["id"];
             _this.service
-                .getProduct(id) // обращаемся к сервису и запрашиваем фразу по id. Получаем Promise
-                .then(function (result) { return _this.product = result; }); // как только Promise перейдет в состояние resolved присваиваем его значение свойству phrase
+                .getProduct(id)
+                .then(function (result) { return _this.product = result; });
         });
-        // SNAPSHOT
-        // получение начального значения параметра id 
-        /*let id = +this.activatedRoute.snapshot.params["id"];
-        this.service
-            .getPhrase(id)
-            .then(result => this.phrase = result); */
     };
     ProductDetailsComponent.prototype.goToProductList = function () {
-        this.router.navigate(["products"]); // перенаправляем пользователя на PhraseListComponent
+        this.router.navigate(["products"]);
     };
     ProductDetailsComponent = __decorate([
         core_1.Component({

@@ -1,6 +1,4 @@
 <dropdown [items]="categories" [currentItem]="currentCategory" (currentItemChange)="setCurrentCategory($event)"> </dropdown>
-<add-product (productAdded)="productAdded($event)"></add-product>
-
 <div *ngFor="let product of products">
     <div *ngIf="thisCategory(product)" [ngClass]="getClass(product)">
         <div class="id">{{product.id}}</div>
@@ -9,3 +7,4 @@
         <button (click)="delete(product)">Delete</button>
     </div>
 </div>
+<router-outlet></router-outlet>

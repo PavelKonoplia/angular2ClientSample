@@ -8,28 +8,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
-var router_1 = require("@angular/router");
 var forms_1 = require("@angular/forms"); // для ngModel
 var app_component_1 = require("./app.component");
-var app_routes_1 = require("./app.routes");
 var product_module_1 = require("./components/product/product.module");
 var controls_module_1 = require("./controls/controls.module");
 var home_module_1 = require("./components/home/home.module");
+var app_routing_module_1 = require("./app-routing.module");
+var app_user_module_1 = require("./app-user/app-user.module");
+var auth_guard_service_1 = require("./services/auth-guard.service");
+var category_service_1 = require("./services/category.service");
+var product_service_1 = require("./services/product.service");
+var auth_service_1 = require("./services/auth.service");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             imports: [
+                app_user_module_1.AppUserModule,
                 home_module_1.HomeModule,
                 product_module_1.ProductModule,
                 controls_module_1.ControlsModule,
                 forms_1.FormsModule,
                 platform_browser_1.BrowserModule,
-                router_1.RouterModule.forRoot(app_routes_1.routes)
+                app_routing_module_1.AppRoutingModule
             ],
             declarations: [app_component_1.AppComponent],
-            bootstrap: [app_component_1.AppComponent]
+            bootstrap: [app_component_1.AppComponent],
+            providers: [auth_guard_service_1.AuthGuard, category_service_1.CategoryService, product_service_1.ProductService, auth_service_1.AuthService]
         })
     ], AppModule);
     return AppModule;

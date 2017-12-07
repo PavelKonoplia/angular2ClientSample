@@ -12,9 +12,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var product_model_1 = require("../../../models/product.model");
 var category_service_1 = require("../../../services/category.service");
+var product_service_1 = require("../../../services/product.service");
 var AddProductComponent = /** @class */ (function () {
-    function AddProductComponent(categoryService) {
+    function AddProductComponent(categoryService, productService) {
         this.categoryService = categoryService;
+        this.productService = productService;
         this.product = new product_model_1.ProductModel(undefined, undefined, undefined, undefined);
         this.invalid = false;
         this.productAdded = new core_1.EventEmitter();
@@ -28,7 +30,7 @@ var AddProductComponent = /** @class */ (function () {
     AddProductComponent.prototype.addProduct = function () {
         this.invalid = false;
         if (this.product.id && this.product.name && this.product.price && this.product.category) {
-            this.productAdded.emit(this.product);
+            this.productService.addProduct(this.product);
         }
         else {
             this.invalid = true;
@@ -49,7 +51,8 @@ var AddProductComponent = /** @class */ (function () {
             templateUrl: 'add-product.component.html',
             styleUrls: ['add-product.component.css']
         }),
-        __metadata("design:paramtypes", [category_service_1.CategoryService])
+        __metadata("design:paramtypes", [category_service_1.CategoryService,
+            product_service_1.ProductService])
     ], AddProductComponent);
     return AddProductComponent;
 }());

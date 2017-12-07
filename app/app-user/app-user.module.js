@@ -10,27 +10,25 @@ var core_1 = require("@angular/core");
 var common_1 = require("@angular/common");
 var forms_1 = require("@angular/forms"); // для ngModel
 var index_1 = require("./index");
-var controls_module_1 = require("../../controls/controls.module");
-var product_routing_module_1 = require("./product-routing.module");
-var ProductModule = /** @class */ (function () {
-    function ProductModule() {
+var app_user_routing_module_1 = require("./app-user-routing.module");
+var AppUserModule = /** @class */ (function () {
+    function AppUserModule() {
     }
-    ProductModule = __decorate([
+    AppUserModule = __decorate([
         core_1.NgModule({
             imports: [
                 common_1.CommonModule,
-                controls_module_1.ControlsModule,
                 forms_1.FormsModule,
-                product_routing_module_1.ProductRoutingModule
+                app_user_routing_module_1.AppUserRoutingModule
             ],
             // exports: [
-            //     ProductListComponent,AddProductComponent,ProductDetailsComponent],
+            //     LoginComponent, AdminComponent],
             declarations: [
-                index_1.ProductListComponent, index_1.AddProductComponent, index_1.ProductDetailsComponent
+                index_1.LoginComponent, index_1.AdminComponent
             ]
         })
-    ], ProductModule);
-    return ProductModule;
+    ], AppUserModule);
+    return AppUserModule;
 }());
-exports.ProductModule = ProductModule;
-//# sourceMappingURL=product.module.js.map
+exports.AppUserModule = AppUserModule;
+//# sourceMappingURL=app-user.module.js.map

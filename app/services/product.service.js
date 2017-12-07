@@ -24,14 +24,15 @@ var productsPromise = Promise.resolve(products);
 var ProductService = /** @class */ (function () {
     function ProductService() {
     }
-    ProductService.prototype.getData = function () {
-        return productsPromise;
-    };
     ProductService.prototype.getAll = function () {
         return productsPromise;
     };
     ProductService.prototype.getProduct = function (id) {
         return productsPromise.then(function (products) { return products.find(function (x) { return x.id == id; }); });
+    };
+    ProductService.prototype.addProduct = function (product) {
+        products = products.concat(product);
+        productsPromise = Promise.resolve(products);
     };
     ProductService = __decorate([
         core_1.Injectable()

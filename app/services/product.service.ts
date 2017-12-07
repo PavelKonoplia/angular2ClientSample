@@ -19,14 +19,15 @@ let productsPromise = Promise.resolve(products);
 
 @Injectable() export class ProductService {
 
-    getData(): Promise<ProductModel[]> {
-        return productsPromise;
-    }
-
     getAll(): Promise<ProductModel[]> {
         return productsPromise;
     }
     getProduct(id: number): Promise<ProductModel> {
         return productsPromise.then(products => products.find(x => x.id == id));
+    }
+
+    addProduct(product:ProductModel) {
+        products = products.concat(product);
+        productsPromise= Promise.resolve(products);
     }
 }

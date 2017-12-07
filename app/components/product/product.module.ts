@@ -5,19 +5,18 @@ import { FormsModule } from "@angular/forms"; // для ngModel
 import { ProductListComponent, AddProductComponent, ProductDetailsComponent} from "./index";
 import { DropdownComponent } from '../../controls/dropdown/dropdown.component';
 import { ControlsModule } from '../../controls/controls.module';
-import { CategoryService } from '../../services/category.service';
-import { ProductService } from '../../services/product.service';
+import { ProductRoutingModule } from './product-routing.module';
 
 @NgModule({
     imports: [
         CommonModule,
         ControlsModule,
-        FormsModule],
-    exports: [
-        ProductListComponent,AddProductComponent,ProductDetailsComponent],
+        FormsModule,
+        ProductRoutingModule],
+    // exports: [
+    //     ProductListComponent,AddProductComponent,ProductDetailsComponent],
     declarations: [
-        ProductListComponent,AddProductComponent,ProductDetailsComponent],
-        providers: [CategoryService,ProductService] 
+        ProductListComponent,AddProductComponent,ProductDetailsComponent]
 })
 export class ProductModule {
 

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ProductModel } from '../../../models/product.model';
 import { CategoryService } from '../../../services/category.service';
+import { ProductService } from "../../../services/product.service";
 
 @Component({
     moduleId: module.id,
@@ -17,7 +18,8 @@ export class AddProductComponent {
     @Output()
     productAdded: EventEmitter<ProductModel> = new EventEmitter();
 
-    constructor(private categoryService: CategoryService) {
+    constructor(private categoryService: CategoryService,
+        private productService: ProductService) {
     }
 
     ngOnInit() {
@@ -26,11 +28,10 @@ export class AddProductComponent {
             .then(result => this.categories = result); // как только Promise перейдет в состояние resolved результат его работы присваиваем свойству phrases
     }
 
-
     addProduct() {
         this.invalid = false;
         if (this.product.id && this.product.name && this.product.price && this.product.category) {
-            this.productAdded.emit(this.product);
+            this.productService.addProduct(this.product);
         } else {
             this.invalid = true;
         }

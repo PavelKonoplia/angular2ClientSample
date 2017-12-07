@@ -14,9 +14,10 @@ var product_service_1 = require("../../../services/product.service");
 var category_service_1 = require("../../../services/category.service");
 var router_1 = require("@angular/router");
 var ProductListComponent = /** @class */ (function () {
-    function ProductListComponent(productService, categoryService, router) {
+    function ProductListComponent(productService, categoryService, activatedRoute, router) {
         this.productService = productService;
         this.categoryService = categoryService;
+        this.activatedRoute = activatedRoute;
         this.router = router;
         this.currentCategory = "All";
     }
@@ -26,9 +27,12 @@ var ProductListComponent = /** @class */ (function () {
     };
     ProductListComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.productService
-            .getAll()
-            .then(function (result) { return _this.products = result; });
+        this.activatedRoute.params.forEach(function (params) {
+            _this.selectedId = +params["id"]; // чтение опционального параметра
+            _this.productService
+                .getAll()
+                .then(function (result) { return _this.products = result; });
+        });
         this.categoryService
             .getData()
             .then(function (result) { return _this.categories = result; });
@@ -37,7 +41,7 @@ var ProductListComponent = /** @class */ (function () {
         }
     };
     ProductListComponent.prototype.onSelect = function (selected) {
-        this.router.navigate(["product", selected.id]);
+        this.router.navigate(["products", selected.id]);
     };
     ProductListComponent.prototype.delete = function (p) {
         var id = this.products.indexOf(p);
@@ -45,9 +49,6 @@ var ProductListComponent = /** @class */ (function () {
             this.products.splice(id, 1);
             console.log(p.id);
         }
-    };
-    ProductListComponent.prototype.productAdded = function (event) {
-        event ? this.products = this.products.concat(event) : 0;
     };
     ProductListComponent.prototype.getClass = function (p) {
         return p.price > 500 ? "red" : "myrow";
@@ -71,6 +72,7 @@ var ProductListComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [product_service_1.ProductService,
             category_service_1.CategoryService,
+            router_1.ActivatedRoute,
             router_1.Router])
     ], ProductListComponent);
     return ProductListComponent;

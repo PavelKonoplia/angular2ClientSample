@@ -3,7 +3,7 @@ import { ProductModel } from '../../../models/product.model';
 import { AddProductComponent } from '../add-product/add-product.component';
 import { ProductService } from '../../../services/product.service';
 import { CategoryService } from '../../../services/category.service';
-import { Router } from "@angular/router"
+import { Router, ActivatedRoute, Params } from "@angular/router"
 
 @Component({
     moduleId: module.id,
@@ -18,9 +18,11 @@ export class ProductListComponent {
     currentCategory: string = "All";
     products: any;
     categories: any;
+    selectedId: number;
 
     constructor(private productService: ProductService,
-        private categoryService: CategoryService,
+        private categoryService: CategoryService,        
+        private activatedRoute: ActivatedRoute,
         private router: Router) {
     }
 
@@ -30,9 +32,12 @@ export class ProductListComponent {
     }
 
     ngOnInit() {
-        this.productService 
-            .getAll()   
-            .then(result => this.products = result); 
+        this.activatedRoute.params.forEach((params: Params) => {
+            this.selectedId = +params["id"]; // чтение опционального параметра
+            this.productService 
+                .getAll()    
+                .then(result => this.products = result); 
+        });
 
         this.categoryService 
             .getData()   
@@ -44,7 +49,7 @@ export class ProductListComponent {
     }
 
     onSelect(selected: ProductModel) {
-        this.router.navigate(["product", selected.id]);
+        this.router.navigate(["products", selected.id]);
     }
 
     delete(p: ProductModel) {
@@ -53,10 +58,6 @@ export class ProductListComponent {
             this.products.splice(id, 1);
             console.log(p.id);
         }
-    }
-
-    productAdded(event: any) {
-        event ? this.products = this.products.concat(event) : 0;
     }
 
     getClass(p: ProductModel): string {
