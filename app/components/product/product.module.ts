@@ -13,8 +13,8 @@ import { ProductRoutingModule } from './product-routing.module';
         ControlsModule,
         FormsModule,
         ProductRoutingModule],
-    // exports: [
-    //     ProductListComponent,AddProductComponent,ProductDetailsComponent],
+    exports: [
+        ProductListComponent,AddProductComponent,ProductDetailsComponent],
     declarations: [
         ProductListComponent,AddProductComponent,ProductDetailsComponent]
 })

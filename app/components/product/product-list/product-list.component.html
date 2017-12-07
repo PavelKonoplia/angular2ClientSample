@@ -4,7 +4,7 @@
         <div class="id">{{product.id}}</div>
         <div class="name" (click)="onSelect(product)">{{product.name}}</div>
         <div class="price">{{product.price}}</div>
-        <button (click)="delete(product)">Delete</button>
+        <button *ngIf="canDelete" (click)="delete(product)">Delete</button>
     </div>
 </div>
 <router-outlet></router-outlet>

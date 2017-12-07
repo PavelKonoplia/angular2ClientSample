@@ -63,6 +63,10 @@ var ProductListComponent = /** @class */ (function () {
         core_1.Input(),
         __metadata("design:type", Number)
     ], ProductListComponent.prototype, "rows", void 0);
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], ProductListComponent.prototype, "canDelete", void 0);
     ProductListComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

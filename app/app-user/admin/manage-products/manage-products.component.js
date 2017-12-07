@@ -7,17 +7,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var AdminComponent = /** @class */ (function () {
-    function AdminComponent() {
+var ManageProductsComponent = /** @class */ (function () {
+    function ManageProductsComponent() {
     }
-    AdminComponent = __decorate([
+    ManageProductsComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: "admin",
-            templateUrl: "admin.component.html"
+            selector: "manage-products",
+            templateUrl: "manage-products.component.html"
         })
-    ], AdminComponent);
-    return AdminComponent;
+    ], ManageProductsComponent);
+    return ManageProductsComponent;
 }());
-exports.AdminComponent = AdminComponent;
-//# sourceMappingURL=admin.component.js.map
+exports.ManageProductsComponent = ManageProductsComponent;
+//# sourceMappingURL=manage-products.component.js.map

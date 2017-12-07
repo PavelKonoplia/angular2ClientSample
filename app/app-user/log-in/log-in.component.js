@@ -29,7 +29,7 @@ var LoginComponent = /** @class */ (function () {
             if (_this.authService.isLoggedIn) {
                 // Получение строки для перенаправления от сервиса
                 // если строки нет перенаправляем на страницу по умолчнанию
-                var redirect = _this.authService.redirectUrl ? _this.authService.redirectUrl : "/admin";
+                var redirect = _this.authService.redirectUrl ? _this.authService.redirectUrl : "/manage-products";
                 // перенапраление пользователя
                 _this.router.navigate([redirect]);
             }

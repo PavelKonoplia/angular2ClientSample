@@ -34,6 +34,14 @@ var ProductService = /** @class */ (function () {
         products = products.concat(product);
         productsPromise = Promise.resolve(products);
     };
+    ProductService.prototype.deleteProduct = function (product) {
+        var id = products.indexOf(product);
+        if (id > -1) {
+            products.splice(id, 1);
+            console.log(product.id);
+        }
+        productsPromise = Promise.resolve(products);
+    };
     ProductService = __decorate([
         core_1.Injectable()
     ], ProductService);

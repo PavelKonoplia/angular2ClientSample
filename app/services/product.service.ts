@@ -26,8 +26,17 @@ let productsPromise = Promise.resolve(products);
         return productsPromise.then(products => products.find(x => x.id == id));
     }
 
-    addProduct(product:ProductModel) {
+    addProduct(product: ProductModel) {
         products = products.concat(product);
-        productsPromise= Promise.resolve(products);
+        productsPromise = Promise.resolve(products);
+    }
+
+    deleteProduct(product: ProductModel) {
+        var id = products.indexOf(product);
+        if (id > -1) {
+            products.splice(id, 1);
+            console.log(product.id);
+        }
+        productsPromise = Promise.resolve(products);
     }
 }

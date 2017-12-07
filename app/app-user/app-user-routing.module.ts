@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 
-import { AdminComponent } from "./admin/admin.component";
+import { ManageProductsComponent } from "./admin/manage-products/manage-products.component";
 import { LoginComponent } from "./log-in/log-in.component";
 import { AddProductComponent } from "../components/product/add-product/add-product.component";
 
@@ -11,18 +11,14 @@ import { AuthGuard } from "../services/auth-guard.service";
     imports: [
         RouterModule.forChild([
             {
-                path: "admin",
-                component: AdminComponent,
+                path: "manage-products",
+                component: ManageProductsComponent,
                 canActivate: [AuthGuard],
-                children: [
-                    {
-                        path: "",
-                        children: [
-                            { path: "add-product", component: AddProductComponent },
-                            { path: "", redirectTo: "add-product", pathMatch: "full" }
-                        ]
-                    }
-                ]
+            },
+            {
+                path: "add-product",
+                component: AddProductComponent,
+                canActivate: [AuthGuard],
             },
             {
                 path: "login",

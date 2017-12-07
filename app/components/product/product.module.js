@@ -23,8 +23,9 @@ var ProductModule = /** @class */ (function () {
                 forms_1.FormsModule,
                 product_routing_module_1.ProductRoutingModule
             ],
-            // exports: [
-            //     ProductListComponent,AddProductComponent,ProductDetailsComponent],
+            exports: [
+                index_1.ProductListComponent, index_1.AddProductComponent, index_1.ProductDetailsComponent
+            ],
             declarations: [
                 index_1.ProductListComponent, index_1.AddProductComponent, index_1.ProductDetailsComponent
             ]

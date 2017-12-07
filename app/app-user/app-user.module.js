@@ -11,20 +11,20 @@ var common_1 = require("@angular/common");
 var forms_1 = require("@angular/forms"); // для ngModel
 var index_1 = require("./index");
 var app_user_routing_module_1 = require("./app-user-routing.module");
+var product_module_1 = require("../components/product/product.module");
 var AppUserModule = /** @class */ (function () {
     function AppUserModule() {
     }
     AppUserModule = __decorate([
         core_1.NgModule({
             imports: [
+                product_module_1.ProductModule,
                 common_1.CommonModule,
                 forms_1.FormsModule,
                 app_user_routing_module_1.AppUserRoutingModule
             ],
-            // exports: [
-            //     LoginComponent, AdminComponent],
             declarations: [
-                index_1.LoginComponent, index_1.AdminComponent
+                index_1.LoginComponent, index_1.ManageProductsComponent
             ]
         })
     ], AppUserModule);

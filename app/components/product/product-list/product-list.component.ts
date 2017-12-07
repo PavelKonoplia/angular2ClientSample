@@ -19,9 +19,11 @@ export class ProductListComponent {
     products: any;
     categories: any;
     selectedId: number;
+    @Input()
+    canDelete: boolean;
 
     constructor(private productService: ProductService,
-        private categoryService: CategoryService,        
+        private categoryService: CategoryService,
         private activatedRoute: ActivatedRoute,
         private router: Router) {
     }
@@ -34,18 +36,18 @@ export class ProductListComponent {
     ngOnInit() {
         this.activatedRoute.params.forEach((params: Params) => {
             this.selectedId = +params["id"]; // чтение опционального параметра
-            this.productService 
-                .getAll()    
-                .then(result => this.products = result); 
+            this.productService
+                .getAll()
+                .then(result => this.products = result);
         });
 
-        this.categoryService 
-            .getData()   
-            .then(result => this.categories = result); 
+        this.categoryService
+            .getData()
+            .then(result => this.categories = result);
 
-        if(this.products){
+        if (this.products) {
             this.cutTheRows();
-        }        
+        }
     }
 
     onSelect(selected: ProductModel) {

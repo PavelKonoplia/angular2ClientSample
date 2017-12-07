@@ -2,18 +2,19 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms"; // для ngModel
 
-import { LoginComponent, AdminComponent } from "./index";
+import { LoginComponent, ManageProductsComponent } from "./index";
 import { AppUserRoutingModule } from './app-user-routing.module';
+import { ProductModule } from '../components/product/product.module';
+import { ProductListComponent } from '../components/product/product-list/product-list.component';
 
 @NgModule({
     imports: [
+        ProductModule,
         CommonModule,
         FormsModule,
-         AppUserRoutingModule],
-    // exports: [
-    //     LoginComponent, AdminComponent],
+        AppUserRoutingModule],
     declarations: [
-        LoginComponent, AdminComponent]
+         LoginComponent, ManageProductsComponent]
 })
 export class AppUserModule {
 
