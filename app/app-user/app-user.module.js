@@ -24,7 +24,7 @@ var AppUserModule = /** @class */ (function () {
                 app_user_routing_module_1.AppUserRoutingModule
             ],
             declarations: [
-                index_1.LoginComponent, index_1.ManageProductsComponent
+                index_1.LoginComponent, index_1.ManageProductsComponent, index_1.EditProductComponent
             ]
         })
     ], AppUserModule);

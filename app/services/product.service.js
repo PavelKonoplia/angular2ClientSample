@@ -34,6 +34,13 @@ var ProductService = /** @class */ (function () {
         products = products.concat(product);
         productsPromise = Promise.resolve(products);
     };
+    ProductService.prototype.editProduct = function (product) {
+        var id = products.indexOf(product);
+        if (id > -1) {
+            products[id] = product;
+        }
+        productsPromise = Promise.resolve(products);
+    };
     ProductService.prototype.deleteProduct = function (product) {
         var id = products.indexOf(product);
         if (id > -1) {

@@ -8,10 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var manage_products_component_1 = require("./admin/manage-products/manage-products.component");
+var index_1 = require("./index");
 var log_in_component_1 = require("./log-in/log-in.component");
 var add_product_component_1 = require("../components/product/add-product/add-product.component");
 var auth_guard_service_1 = require("../services/auth-guard.service");
+var can_deactivate_guard_service_1 = require("../services/can-deactivate-guard.service");
+var edit_product_resolve_service_1 = require("../services/edit-product-resolve.service");
 var AppUserRoutingModule = /** @class */ (function () {
     function AppUserRoutingModule() {
     }
@@ -19,11 +21,31 @@ var AppUserRoutingModule = /** @class */ (function () {
         core_1.NgModule({
             imports: [
                 router_1.RouterModule.forChild([
+                    { path: "manage-products", component: index_1.ManageProductsComponent },
                     {
-                        path: "manage-products",
-                        component: manage_products_component_1.ManageProductsComponent,
-                        canActivate: [auth_guard_service_1.AuthGuard],
+                        path: "manage-products/:id",
+                        component: index_1.EditProductComponent,
+                        canDeactivate: [can_deactivate_guard_service_1.CanDeactivateGuard],
+                        // Свойство позволяет определить объект, который будет доступен в данных ActivatedRoute в компоненте, который получил пользователь.
+                        resolve: {
+                            phrase: edit_product_resolve_service_1.EditProductResolve
+                        }
                     },
+                    // {
+                    //     path: "manage-products",
+                    //     component: ManageProductsComponent,
+                    //     canActivate: [AuthGuard],
+                    //     children: [
+                    //         {
+                    //             path: ":id",
+                    //             component: EditProductComponent,
+                    //             canDeactivate: [CanDeactivateGuard]
+                    //         }
+                    //         ,{
+                    //             path: ""
+                    //         }
+                    //     ]
+                    // },
                     {
                         path: "add-product",
                         component: add_product_component_1.AddProductComponent,

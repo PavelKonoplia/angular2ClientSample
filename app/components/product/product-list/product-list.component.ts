@@ -21,6 +21,8 @@ export class ProductListComponent {
     selectedId: number;
     @Input()
     canDelete: boolean;
+    @Input()
+    elementUrl: string = 'products';
 
     constructor(private productService: ProductService,
         private categoryService: CategoryService,
@@ -51,7 +53,7 @@ export class ProductListComponent {
     }
 
     onSelect(selected: ProductModel) {
-        this.router.navigate(["products", selected.id]);
+        this.router.navigate([this.elementUrl, selected.id]);
     }
 
     delete(p: ProductModel) {

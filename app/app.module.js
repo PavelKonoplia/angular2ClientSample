@@ -19,6 +19,8 @@ var auth_guard_service_1 = require("./services/auth-guard.service");
 var category_service_1 = require("./services/category.service");
 var product_service_1 = require("./services/product.service");
 var auth_service_1 = require("./services/auth.service");
+var can_deactivate_guard_service_1 = require("./services/can-deactivate-guard.service");
+var edit_product_resolve_service_1 = require("./services/edit-product-resolve.service");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -35,7 +37,7 @@ var AppModule = /** @class */ (function () {
             ],
             declarations: [app_component_1.AppComponent],
             bootstrap: [app_component_1.AppComponent],
-            providers: [auth_guard_service_1.AuthGuard, category_service_1.CategoryService, product_service_1.ProductService, auth_service_1.AuthService]
+            providers: [auth_guard_service_1.AuthGuard, category_service_1.CategoryService, product_service_1.ProductService, auth_service_1.AuthService, can_deactivate_guard_service_1.CanDeactivateGuard, edit_product_resolve_service_1.EditProductResolve]
         })
     ], AppModule);
     return AppModule;

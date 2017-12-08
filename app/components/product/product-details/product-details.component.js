@@ -13,16 +13,16 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var product_service_1 = require("../../../services/product.service");
 var ProductDetailsComponent = /** @class */ (function () {
-    function ProductDetailsComponent(router, activatedRoute, service) {
+    function ProductDetailsComponent(router, activatedRoute, productService) {
         this.router = router;
         this.activatedRoute = activatedRoute;
-        this.service = service;
+        this.productService = productService;
     }
     ProductDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.activatedRoute.params.forEach(function (params) {
             var id = +params["id"];
-            _this.service
+            _this.productService
                 .getProduct(id)
                 .then(function (result) { return _this.product = result; });
         });

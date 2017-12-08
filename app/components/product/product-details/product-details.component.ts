@@ -14,30 +14,18 @@ export class ProductDetailsComponent implements OnInit {
 
     constructor(private router: Router,
         private activatedRoute: ActivatedRoute,
-        private service: ProductService) { }
+        private productService: ProductService) { }
 
     ngOnInit() {
         this.activatedRoute.params.forEach((params: Params) => {
             let id = +params["id"]; 
-            this.service
+            this.productService
                 .getProduct(id)  
                 .then(result => this.product = result);  
         });
-
     }
 
     goToProductList() {
         this.router.navigate(["products"]); 
     }
-
-    /*canDeactivate(): Promise<boolean> | boolean {
-        if (!this.product) {
-            return true;
-        }
-        if (this.product.name == this.editName && this.product.price == this.editPrice) {
-            return true;
-        }
-
-        return confirm("Вы не сохранили изменения. Уйти со страницы?");
-    }*/
 }

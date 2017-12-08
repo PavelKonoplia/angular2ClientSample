@@ -20,6 +20,7 @@ var ProductListComponent = /** @class */ (function () {
         this.activatedRoute = activatedRoute;
         this.router = router;
         this.currentCategory = "All";
+        this.elementUrl = 'products';
     }
     ProductListComponent.prototype.cutTheRows = function () {
         this.rows ? this.rows : this.rows = this.products.length;
@@ -41,7 +42,7 @@ var ProductListComponent = /** @class */ (function () {
         }
     };
     ProductListComponent.prototype.onSelect = function (selected) {
-        this.router.navigate(["products", selected.id]);
+        this.router.navigate([this.elementUrl, selected.id]);
     };
     ProductListComponent.prototype.delete = function (p) {
         var id = this.products.indexOf(p);
@@ -67,6 +68,10 @@ var ProductListComponent = /** @class */ (function () {
         core_1.Input(),
         __metadata("design:type", Boolean)
     ], ProductListComponent.prototype, "canDelete", void 0);
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], ProductListComponent.prototype, "elementUrl", void 0);
     ProductListComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

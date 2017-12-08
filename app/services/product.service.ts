@@ -30,6 +30,14 @@ let productsPromise = Promise.resolve(products);
         products = products.concat(product);
         productsPromise = Promise.resolve(products);
     }
+    
+    editProduct(product:ProductModel){
+        var id = products.indexOf(product);
+        if (id > -1) {
+            products[id]=product;
+        }
+        productsPromise = Promise.resolve(products);
+    }
 
     deleteProduct(product: ProductModel) {
         var id = products.indexOf(product);

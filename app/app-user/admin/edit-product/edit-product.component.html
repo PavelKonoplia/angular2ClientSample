@@ -1,0 +1,9 @@
+<div *ngIf="product">
+	<h2>Selected Phrase</h2>
+	Name: <input type="text" [(ngModel)]="editName" /> <br /> 
+    Price: <input type="text" [(ngModel)]="editPrice" /> <br />
+    Category: <input type="text" [(ngModel)]="editCategory" /> <br />
+    
+    <button (click)="goToProductList()">Cancel</button>
+    <button (click)="save()">Save</button>
+</div>

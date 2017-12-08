@@ -14,19 +14,21 @@ import { AuthGuard } from './services/auth-guard.service';
 import { CategoryService } from './services/category.service';
 import { ProductService } from './services/product.service';
 import { AuthService } from './services/auth.service';
-  
+import { CanDeactivateGuard } from './services/can-deactivate-guard.service';
+import { EditProductResolve } from './services/edit-product-resolve.service';
+
 @NgModule({
   imports: [
     AppUserModule,
     HomeModule,
     ProductModule,
     ControlsModule,
-    FormsModule,    
+    FormsModule,
     BrowserModule,
     AppRoutingModule],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
-  providers:[AuthGuard, CategoryService, ProductService, AuthService] 
+  providers: [AuthGuard, CategoryService, ProductService, AuthService, CanDeactivateGuard, EditProductResolve]
 })
 
 export class AppModule { } 
